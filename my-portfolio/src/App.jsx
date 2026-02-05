@@ -7,10 +7,12 @@ import Skills from "./sections/Skills";
 import Experience from "./sections/Experience";
 import Testimonials from "./sections/Testimonials";
 import Footer from "./sections/Footer";
+import ParticlesBackground from "./components/ParticlesBackground";
 
 const App = () => {
   return (
-    <div>
+    <div className="relative gradient text-white">
+    <ParticlesBackground/>
     <Navbar/>
     <Home/>
     <About/>  
