@@ -118,8 +118,8 @@ const About = () => {
               variants={itemUp}
               className="text-gray-400 text-lg leading-relaxed mb-10"
             >
-              I build scalable, modern applications with a strong focus on clean
-              architecture, delightful UX, and performance.
+              I build scalable, modern full stack applications with a strong focus on clean
+              architecture.
             </motion.p>
 
             <motion.div
