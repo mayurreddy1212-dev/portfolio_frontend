@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="min-h-[80vh] flex flex-col items-center justify-center gap-12 overflow-hidden"
+      className="min-h-[100vh] flex flex-col items-center justify-center gap-12 overflow-hidden"
     >
       {/* Animated text */}
       <h2 className="text-4xl md:text-6xl font-light tracking-wide text-center">
@@ -78,27 +78,27 @@ const Footer = () => {
         <a
           href="https://github.com/mayurreddy1212-dev"
           target="_blank"
-          className="hover:scale-125 hover:text-pink-400 transition-all"
+          className="hover:scale-125 hover:text-purple-400 transition-all"
         >
           <FaGithub />
         </a>
         <a
           href="https://www.linkedin.com/in/mayur-reddy-28b38124b/"
           target="_blank"
-          className="hover:scale-125 hover:text-blue-400 transition-all"
+          className="hover:scale-125 hover:text-purple-400 transition-all"
         >
           <FaLinkedin />
         </a>
         <a
           href="https://x.com/ReddyMayur47642"
           target="_blank"
-          className="hover:scale-125 hover:text-sky-400 transition-all"
+          className="hover:scale-125 hover:text-purple-400 transition-all"
         >
           <FaTwitter />
         </a>
         <a
           href="mailto:mayurreddy5@gmail.com"
-          className="hover:scale-125 hover:text-pink-400 transition-all"
+          className="hover:scale-125 hover:text-purple-400 transition-all"
         >
           <FaEnvelope />
         </a>

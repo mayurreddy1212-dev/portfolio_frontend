@@ -9,10 +9,11 @@ import Testimonials from "./sections/Testimonials";
 import Footer from "./sections/Footer";
 import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor";
-
+import IntroAnimation from "./components/IntroAnimation";
 const App = () => {
   return (
     <div className="relative gradient text-white">
+    <IntroAnimation/>
     <CustomCursor/>
     <ParticlesBackground/>
     <Navbar/>

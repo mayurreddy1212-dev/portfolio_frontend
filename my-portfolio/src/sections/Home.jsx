@@ -117,9 +117,32 @@ const Home = () => {
         </motion.div>
 
         <motion.div variants={itemUp} className="flex gap-4 text-xl opacity-80">
-          <FaXTwitter className="hover:text-white cursor-pointer" />
-          <FaLinkedin className="hover:text-white cursor-pointer" />
-          <FaGithub className="hover:text-white cursor-pointer" />
+          <a
+            href="https://x.com/ReddyMayur47642"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+          >
+            <FaXTwitter />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/mayur-reddy-28b38124b/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="https://github.com/mayurreddy1212-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+          >
+            <FaGithub />
+          </a>
         </motion.div>
       </motion.div>
 
