@@ -10,6 +10,7 @@ import Footer from "./sections/Footer";
 import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor";
 import IntroAnimation from "./components/IntroAnimation";
+import Contact from "./sections/Contact";
 const App = () => {
   return (
     <div className="relative gradient text-white">
@@ -23,6 +24,7 @@ const App = () => {
     <Skills/>
     <Experience/>
     <Testimonials/>
+    <Contact/>
     <Footer/>
     </div>
   )

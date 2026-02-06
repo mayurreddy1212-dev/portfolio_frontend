@@ -112,8 +112,8 @@ const Footer = () => {
           transition: "opacity 0.8s ease",
           transitionDelay: active ? "1100ms" : "0ms",
         }}
-      >
-        Let’s build something beautiful
+      > 
+        Let’s build together
       </p>
     </footer>
   );
