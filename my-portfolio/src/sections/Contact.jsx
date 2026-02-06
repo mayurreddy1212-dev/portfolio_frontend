@@ -1,106 +1,130 @@
-import { useForm } from "@formspree/react";
+import { useForm, ValidationError } from "@formspree/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import rocket from "../assets/rocket.png";
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("xlgwerbn");
-  const [launched, setLaunched] = useState(false);
+  const [launch, setLaunch] = useState(false);
 
-  const submit = async (e) => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     await handleSubmit(e);
-    setLaunched(true);
+    if (!state.errors) setLaunch(true);
   };
 
   return (
-    <section className="relative h-screen bg-black overflow-hidden flex items-center justify-center">
-      {/* background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#0b1020_0%,#04050b_60%,#000_100%)]" />
+    <section className="relative min-h-screen bg-black/60 text-white overflow-hidden flex items-center justify-center">
+      
+      {/* Title */}
+      <h2 className="absolute top-24 tracking-[0.4em] text-white/60 text-3xl">
+        CONTACT
+      </h2>
 
-      {/* ROCKET */}
-      {launched && (
-        <img
-          src={rocket}
-          alt="rocket"
-          className="absolute bottom-[-120px] left-1/2 -translate-x-1/2
-                     w-20 animate-rocket"
-        />
-      )}
-
-      {!state.succeeded ? (
-        <form
-          onSubmit={submit}
-          className="relative z-10 w-[380px] p-8
-                     bg-[#070b1a]/85 border border-indigo-400/30
-                     shadow-[0_0_50px_rgba(0,0,0,0.7)]"
+      {/* FORM */}
+      {!state.succeeded && (
+        <motion.form
+          onSubmit={onSubmit}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 w-[90%] max-w-lg mt-32 p-10
+                     bg-black/10 border border-white/15 rounded-2xl
+                     backdrop-blur-xl shadow-[0_0_60px_rgba(255,255,255,0.05)]"
         >
-          <h2 className="text-xs tracking-[0.3em] text-indigo-300 mb-6">
-            CONTACT TRANSMISSION
-          </h2>
+          <div className="space-y-7">
+            <input
+              name="name"
+              placeholder="NAME"
+              required
+              className="w-full bg-transparent border border-white/20
+                         px-4 py-3 rounded-md tracking-widest
+                         focus:border-cyan-400 outline-none transition"
+            />
 
-          <div className="mb-6">
-            <label className="block text-[11px] tracking-widest text-white/60 mb-2">
-              EMAIL
-            </label>
             <input
               type="email"
               name="email"
+              placeholder="EMAIL"
               required
-              className="w-full bg-black border border-white/15
-                         px-3 py-2 text-sm text-white outline-none
-                         focus:border-indigo-400 transition"
+              className="w-full bg-transparent border border-white/20
+                         px-4 py-3 rounded-md tracking-widest
+                         focus:border-cyan-400 outline-none transition"
             />
-          </div>
 
-          <div className="mb-8">
-            <label className="block text-[11px] tracking-widest text-white/60 mb-2">
-              MESSAGE
-            </label>
             <textarea
               name="message"
-              rows={5}
+              rows="4"
+              placeholder="MESSAGE"
               required
-              className="w-full bg-black border border-white/15
-                         px-3 py-2 text-sm text-white resize-none outline-none
-                         focus:border-indigo-400 transition"
+              className="w-full bg-transparent border border-white/20
+                         px-4 py-3 rounded-md tracking-widest
+                         focus:border-cyan-400 outline-none resize-none transition"
             />
-          </div>
 
-          <button
-            type="submit"
-            disabled={state.submitting}
-            className="w-full py-3 text-xs tracking-[0.35em]
-                       border border-indigo-400 text-indigo-300
-                       hover:bg-indigo-400/10 transition"
-          >
-            TRANSMIT
-          </button>
-        </form>
-      ) : (
-        <div className="relative z-10 px-10 py-8 text-center
-                        bg-[#070b1a]/85 border border-indigo-400/30">
-          <h2 className="text-xs tracking-[0.35em] text-indigo-300 mb-4">
-            SIGNAL RECEIVED
-          </h2>
-          <p className="text-sm text-white/70">
-            Message received.
-            <br />
-            Will connect soon.
-          </p>
-        </div>
+            <ValidationError errors={state.errors} />
+
+            <button
+              type="submit"
+              disabled={state.submitting}
+              className="w-full py-3 rounded-full bg-white text-black
+                         font-semibold tracking-widest hover:scale-105 transition"
+            >
+              {state.submitting ? "TRANSMITTING…" : "SEND"}
+            </button>
+          </div>
+        </motion.form>
       )}
 
-      {/* TAILWIND KEYFRAMES */}
-      <style>
-        {`
-          @keyframes rocket {
-            0% { transform: translate(-50%, 0) scale(1); opacity: 1; }
-            100% { transform: translate(-50%, -120vh) scale(0.9); opacity: 0; }
-          }
-          .animate-rocket {
-            animation: rocket 2.8s ease-in forwards;
-          }
-        `}
-      </style>
+      {/* SUCCESS */}
+      {state.succeeded && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute z-10 text-center mt-40"
+        >
+          <h3 className="text-4xl tracking-wider mb-20">
+            MESSAGE RECEIVED
+          </h3>
+          <p className="text-white/60">
+            Will connect soon…
+          </p>
+        </motion.div>
+      )}
+
+      {/* 🚀 ROCKET */}
+      <AnimatePresence>
+        {launch && (
+          <motion.div
+            initial={{ y: 0 }}
+            animate={{ y: "-130vh" }}
+            transition={{ duration: 1.3, ease: "easeIn" }}
+            className="absolute bottom-[-160px] left-1/2 -translate-x-1/2"
+          >
+            {/* ROCKET */}
+            <img src={rocket} className="w-20 mx-auto relative z-10" />
+
+            {/* FIRE */}
+            <div className="mx-auto w-8 h-32 -mt-2
+                            bg-gradient-to-b from-yellow-200 via-orange-500 to-transparent
+                            blur-sm rounded-full animate-flame" />
+
+            {/* GLOW */}
+            <div className="mx-auto -mt-24 w-24 h-24
+                            bg-orange-500/30 blur-3xl rounded-full" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        @keyframes flame {
+          0% { height: 80px; opacity: 0.7 }
+          50% { height: 120px; opacity: 1 }
+          100% { height: 90px; opacity: 0.8 }
+        }
+        .animate-flame {
+          animation: flame 0.12s infinite alternate;
+        }
+      `}</style>
     </section>
   );
 }
