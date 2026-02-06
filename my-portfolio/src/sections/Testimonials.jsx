@@ -6,19 +6,19 @@ const testimonials = [
     name: "Yash",
     role: "Associate Engineer, Tech Mahindra",
     feedback:
-      "Good",
+      "Good performance, is dedicated to work",
   },
   {
-    name: "Manoj",
-    role: "Associate Trainee, Tech Mahidra",
+    name: "Neeraj",
+    role: "Associate Engineer, Tech Mahidra",
     feedback:
-      "Good",
+      "Nice, Hardworking and a good student",
   },
   {
     name: "Swami Panjala",
     role: "CEO, Elite Softwares",
     feedback:
-      "Good",
+      "fast learner grasps and impements things quickly",
   },
 ];
 
@@ -31,7 +31,7 @@ const TestimonialsSection = () => {
 
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % testimonials.length);
-    }, 4000);
+    }, 2500);
 
     return () => clearInterval(id);
   }, [hovered]);

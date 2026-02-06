@@ -1,82 +1,106 @@
-import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import { useForm } from "@formspree/react";
 import { useState } from "react";
+import rocket from "../assets/rocket.png";
 
-const ContactSection = () => {
-  const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(false);
+export default function ContactSection() {
+  const [state, handleSubmit] = useForm("xlgwerbn");
+  const [launched, setLaunched] = useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .sendForm(
-        "SERVICE_ID",
-        "TEMPLATE_ID",
-        e.target,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(() => {
-        setSent(true);
-        setLoading(false);
-        e.target.reset();
-      })
-      .catch(() => {
-        setLoading(false);
-        alert("Something went wrong. Try again.");
-      });
+  const submit = async (e) => {
+    await handleSubmit(e);
+    setLaunched(true);
   };
 
   return (
-    <section className="relative min-h-screen bg-black text-white flex items-center justify-center overflow-hidden">
-      <h2 className="absolute top-16 text-4xl font-semibold">
-        Contact
-      </h2>
+    <section className="relative h-screen bg-black overflow-hidden flex items-center justify-center">
+      {/* background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,#0b1020_0%,#04050b_60%,#000_100%)]" />
 
-      <motion.form
-        onSubmit={sendEmail}
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-[90%] max-w-lg mt-32 p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl"
-      >
-        <div className="flex flex-col gap-5">
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Your Name"
-            required
-            className="bg-black/40 border border-white/10 rounded-lg px-4 py-3 outline-none"
-          />
+      {/* ROCKET */}
+      {launched && (
+        <img
+          src={rocket}
+          alt="rocket"
+          className="absolute bottom-[-120px] left-1/2 -translate-x-1/2
+                     w-20 animate-rocket"
+        />
+      )}
 
-          <input
-            type="email"
-            name="from_email"
-            placeholder="Your Email"
-            required
-            className="bg-black/40 border border-white/10 rounded-lg px-4 py-3 outline-none"
-          />
+      {!state.succeeded ? (
+        <form
+          onSubmit={submit}
+          className="relative z-10 w-[380px] p-8
+                     bg-[#070b1a]/85 border border-indigo-400/30
+                     shadow-[0_0_50px_rgba(0,0,0,0.7)]"
+        >
+          <h2 className="text-xs tracking-[0.3em] text-indigo-300 mb-6">
+            CONTACT TRANSMISSION
+          </h2>
 
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            required
-            className="bg-black/40 border border-white/10 rounded-lg px-4 py-3 outline-none resize-none"
-          />
+          <div className="mb-6">
+            <label className="block text-[11px] tracking-widest text-white/60 mb-2">
+              EMAIL
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              className="w-full bg-black border border-white/15
+                         px-3 py-2 text-sm text-white outline-none
+                         focus:border-indigo-400 transition"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label className="block text-[11px] tracking-widest text-white/60 mb-2">
+              MESSAGE
+            </label>
+            <textarea
+              name="message"
+              rows={5}
+              required
+              className="w-full bg-black border border-white/15
+                         px-3 py-2 text-sm text-white resize-none outline-none
+                         focus:border-indigo-400 transition"
+            />
+          </div>
 
           <button
             type="submit"
-            disabled={loading}
-            className="mt-4 py-3 rounded-full bg-white text-black font-semibold hover:scale-105 transition disabled:opacity-50"
+            disabled={state.submitting}
+            className="w-full py-3 text-xs tracking-[0.35em]
+                       border border-indigo-400 text-indigo-300
+                       hover:bg-indigo-400/10 transition"
           >
-            {loading ? "Sending..." : sent ? "Message Sent ✓" : "Send Message"}
+            TRANSMIT
           </button>
+        </form>
+      ) : (
+        <div className="relative z-10 px-10 py-8 text-center
+                        bg-[#070b1a]/85 border border-indigo-400/30">
+          <h2 className="text-xs tracking-[0.35em] text-indigo-300 mb-4">
+            SIGNAL RECEIVED
+          </h2>
+          <p className="text-sm text-white/70">
+            Message received.
+            <br />
+            Will connect soon.
+          </p>
         </div>
-      </motion.form>
+      )}
+
+      {/* TAILWIND KEYFRAMES */}
+      <style>
+        {`
+          @keyframes rocket {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -120vh) scale(0.9); opacity: 0; }
+          }
+          .animate-rocket {
+            animation: rocket 2.8s ease-in forwards;
+          }
+        `}
+      </style>
     </section>
   );
-};
-
-export default ContactSection;
+}
