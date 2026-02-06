@@ -41,7 +41,7 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-black/90 text-white flex items-center justify-center overflow-hidden">
+    <section id="experience" className="relative min-h-screen bg-black/90 text-white flex items-center justify-center overflow-hidden">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

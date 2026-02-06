@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const links = ["Home", "About", "Projects", "Experience", "Contact"];
+  const links = ["Home", "About", "Projects", "Experience", "Skills", "Testimonials", "Contact"];
 
   return (
     <>

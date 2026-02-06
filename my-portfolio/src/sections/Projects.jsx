@@ -59,7 +59,7 @@ const ProjectSection = () => {
   const project = projects[index];
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center bg-black/80 text-white overflow-hidden">
+    <section id="projects" className="relative h-screen flex flex-col items-center justify-center bg-black/80 text-white overflow-hidden">
       <h1 className="absolute top-12 text-3xl font-semibold tracking-wide">
         My Work
       </h1>
