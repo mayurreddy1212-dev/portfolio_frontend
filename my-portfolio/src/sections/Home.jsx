@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-between px-16 text-white overflow-hidden bg-black/50"
+      className="relative min-h-screen flex items-center justify-between px-16 text-white overflow-hidden bg-black/70"
     >
       <div className="absolute inset-19 bg-[radial-gradient(circle_at_left,rgba(168,139,255,0.35),transparent_45%)]" />
 

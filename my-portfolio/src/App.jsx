@@ -19,9 +19,9 @@ const App = () => {
     <ParticlesBackground/>
     <Navbar/>
     <Home/>
-    <About/>  
+    <About/> 
+    <Skills/> 
     <Projects/>
-    <Skills/>
     <Experience/>
     <Testimonials/>
     <Contact/>

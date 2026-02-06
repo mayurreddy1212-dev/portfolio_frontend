@@ -34,7 +34,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center px-16 md:px-24 text-white overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center px-16 md:px-24 text-white overflow-hidden bg-black/91"
     >
       <style>
         {`
