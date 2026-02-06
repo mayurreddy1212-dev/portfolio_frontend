@@ -14,7 +14,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-black/60 text-white overflow-hidden flex items-center justify-center">
+    <section id="contact" className="relative min-h-screen bg-black/60 text-white overflow-hidden flex items-center justify-center">
       
       {/* Title */}
       <h2 className="absolute top-24 tracking-[0.4em] text-white/60 text-3xl">
