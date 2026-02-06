@@ -19,7 +19,7 @@ const itemUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { delay:2, duration: 0.8, ease: "easeOut" },
   },
 };
 
@@ -149,7 +149,7 @@ const Home = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeIn" }}
+        transition={{ delay:1.8, duration: 1.5, ease: "easeIn" }}
         className="relative z-10"
       >
         <motion.img
