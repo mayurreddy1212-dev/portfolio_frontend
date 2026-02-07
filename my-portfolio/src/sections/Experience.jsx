@@ -11,21 +11,21 @@ const experiences = [
     title: "Web Developer Intern",
     company: "Elite Softwares",
     period: "2022–2023",
-    description: "Gained knowledge about Django, MySQL",
+    description: "HTML, CSS, JS , Django, MySQL",
   },
   {
     title: "GenAI Intern",
     company: "Tech Mahindra",
     period: "2024",
     description:
-      "Worked with RAG, LLMs, SLMs and chatbot development",
+      "RAG, LLMs, SLMs",
   },
   {
     title: "Full Stack Developer",
     company: "Fulcrum Digital",
     period: "2025–Present",
     description:
-      "Working with Agentic AI, FastAPI and scalable systems",
+      "Agentic AI, FastAPI, React",
   },
 ];
 
