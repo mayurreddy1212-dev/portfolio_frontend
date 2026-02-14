@@ -21,7 +21,7 @@ const Intro = ({ onFinish }) => {
     const timer = setTimeout(() => {
       setShow(false);
       onFinish();
-    }, total + 400);
+    }, total + 100);
 
     return () => clearTimeout(timer);
   }, [onFinish]);
